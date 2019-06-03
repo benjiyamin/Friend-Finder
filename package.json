@@ -1,0 +1,23 @@
+{
+  "name": "friend-finder",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjiyamin/Friend-Finder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjiyamin/Friend-Finder/issues"
+  },
+  "homepage": "https://github.com/benjiyamin/Friend-Finder#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
