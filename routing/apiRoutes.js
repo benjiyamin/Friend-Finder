@@ -47,7 +47,6 @@ module.exports = function (app) {
         let data = JSON.stringify(friends)
         fs.writeFile('./app/data/friends.json', data, function (error) {
           if (error) throw error
-          //console.log(bestMatch)
           response.json(bestMatch)
         })
       })
