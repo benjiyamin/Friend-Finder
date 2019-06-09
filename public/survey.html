@@ -1,22 +1,195 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
+<head>
+  <title>Friend Finder</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <h1>Hello Survey</h1>
-      
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+  <!-- Bootstrap CSS -->
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+  <link rel="stylesheet"
+    href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+    integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/d091c86d2b.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <!-- Navbar content -->
+    <a class="navbar-brand" href="/">Friend Finder</a>
+  </nav>
+
+  <div class="container">
+
+    <div class="row my-4">
+      <form class="col" id="form">
+        <h1 class="text-center display-4">Survey Questions</h1>
+        <hr>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="nameInput" class="bmd-label-floating">Name (Required)</label>
+            <input name="name" type="text" class="form-control" id="nameInput">
+          </div>
+          <div class="form-group col-6">
+            <label for="photoInput" class="bmd-label-floating">Link to Photo Image (Required)</label>
+            <input name="photo" type="url" class="form-control" id="photoInput">
+          </div>
+        </div>
+        <hr>
+        <div id="questions">
+        </div>
+        <button class="btn btn-raised btn-primary btn-lg btn-block" id="submit">
+          <i class="fas fa-check-circle"></i>
+          Submit</button>
+      </form>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/friends">API Friends List</a> | <a href="#">GitHub Repo</a></p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Best Match</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="modalName"></p>
+          <img id="modalImg" src="" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>-->
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+    integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+    integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
+  </script>
+  <script>
+    $(document).ready(function () {
+
+      let $questions = $('#questions')
+
+      $questions.empty()
+      $.get('/api/questions')
+        .then(function (response) {
+          for (let i = 0; i < response.length; i++) {
+            const question = response[i];
+            let questionHeader = $('<h3>')
+              .text(`Question ${i + 1}`)
+            let questionText = $('<p>')
+              .addClass('lead')
+              .text(question)
+            let selectInput = $('<select>')
+              .addClass('form-control')
+              .attr('id', `select${i + 1}`)
+              .attr('name', `answer${i + 1}`)
+            const OPTIONS = [{
+                value: 1,
+                display: '1 (Strongly Disagree)'
+              },
+              {
+                value: 2,
+                display: '2'
+              },
+              {
+                value: 3,
+                display: '3'
+              },
+              {
+                value: 4,
+                display: '4'
+              },
+              {
+                value: 5,
+                display: '5 (Strongly Agree)'
+              }
+            ]
+            OPTIONS.forEach(option => {
+              let o = $('<option>')
+                .text(option.display)
+                .attr('data-value', option.value)
+              selectInput.append(o)
+            });
+            let selectGroup = $('<div>')
+              .addClass('form-group')
+              .append(selectInput)
+            let questionDiv = $('<div>')
+              .append(questionHeader, questionText, selectGroup)
+            $questions.append(questionDiv)
+          }
+        })
+        .catch(function (error) {
+          throw error
+        })
+
+      $('#submit').on('click', function (event) {
+        event.preventDefault()
+
+        var data = {
+          name: $('#nameInput').val().trim(),
+          photo: $('#photoInput').val().trim(),
+          scores: []
+        };
+
+        var $inputs = $('#form :input')
+
+        var values = {};
+        $inputs.each(function () {
+          let $input = $(this)
+          if ($input.is("select")) {
+            let value = $input.find(':selected').attr('data-value')
+            data.scores.push(value)
+          }
+        })
+
+        $.post('api/friends/', data,
+          function (data) {
+            let bestMatch = data
+            console.log(bestMatch)
+            $('#modalName').text(bestMatch.name)
+            $('#modalImg').attr('src', bestMatch.photo)
+            $('#modal').modal('show')
+            //$inputs.val('')
+          })
+
+      });
+
+      $('body').bootstrapMaterialDesign();
+    });
+  </script>
+</body>
+
 </html>

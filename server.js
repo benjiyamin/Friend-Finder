@@ -3,6 +3,10 @@ const path = require('path')
 const express = require('express')
 
 
+const apiRoutes = require('./routing/apiRoutes')
+const htmlRoutes = require('./routing/htmlRoutes')
+
+
 const app = express()
 const PORT = 8080
 
@@ -14,14 +18,8 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 
-app.get('/', function (request, response) {
-  response.sendFile(path.join(__dirname, 'public/home.html'))
-})
-
-
-app.get('/survey', function (request, response) {
-  response.sendFile(path.join(__dirname, 'public/survey.html'))
-})
+apiRoutes(app)
+htmlRoutes(app)
 
 
 app.listen(PORT, function () {
