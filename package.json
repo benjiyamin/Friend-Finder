@@ -20,7 +20,7 @@
   "homepage": "https://github.com/benjiyamin/Friend-Finder#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "mocha": "^6.1.4"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "express": "^4.17.1"
